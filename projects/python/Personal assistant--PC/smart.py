@@ -6,7 +6,7 @@ import os # to save/open files
 import webbrowser
 import wolframalpha # to calculate strings into formula
 from selenium import webdriver # to control browser operations
-
+import pywhatkit
 num = 1
 def assistant_speaks(output):
 	global num
@@ -183,6 +183,18 @@ def open_application(input):
 		assistant_speaks("Application not available")
 		return
 
+#code to send message to a number
+
+def Whatsapp_open():
+   
+    pywhatkit.sendwhatmsg_instantly(
+    phone_no="+200000000", #any phone number
+    message="My voice Assistant is talk to you",
+    #time_hour=1,
+    #time_min=30
+    )
+
+###############################################33
 # Driver Code
 if __name__ == "__main__":
 	assistant_speaks("What's your name, Human?")
