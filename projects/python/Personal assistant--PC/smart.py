@@ -36,7 +36,8 @@ def get_audio():
 		print("Speak...")
 		
 		# recording the audio using speech recognition
-		audio = rObject.listen(source, phrase_time_limit = 5)
+		
+		audio = rObject.listen(source,  phrase_time_limit = 2)
 	print("Stop.") # limit 5 secs
 
 	try:
@@ -68,14 +69,11 @@ def process_text(input):
 			return
 
 		elif "who made you" in input or "created you" in input:
-			speak = "I have been created by Sheetansh Kumar."
+			speak = "you made me embabi."
 			assistant_speaks(speak)
 			return
 
-		elif "geeksforgeeks" in input:# just
-			speak = """Geeks for Geeks is the Best Online Coding Platform for learning."""
-			assistant_speaks(speak)
-			return
+		
 
 		elif "calculate" in input.lower():
 			
@@ -111,7 +109,8 @@ def process_text(input):
 		ans = get_audio()
 		if 'yes' in str(ans) or 'yeah' in str(ans):
 			search_web(input)
-
+		if 'no' in str(ans):
+			exit
 def search_web(input):
 
 	driver = webbrowser
@@ -160,7 +159,7 @@ def open_application(input):
 
 	if "chrome" in input:
 		assistant_speaks("Google Chrome")
-		os.popen('C:\Program Files (x86)\Google\Chrome\Application\chrome.exe')
+		os.popen(' /usr/bin/google-chrome /usr/share/man/man1/google-chrome.1.gz')
 		return
 
 	elif "firefox" in input or "mozilla" in input:
@@ -169,13 +168,17 @@ def open_application(input):
 		return
 
 	elif "word" in input:
-		assistant_speaks("Opening Microsoft Word")
-		os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office 2013\\Word 2013.lnk')
+		assistant_speaks("libreoffice writer")
+		os.system('libreoffice --writer') 
+		return
+	elif "excel" in input:
+		assistant_speaks("Opening libreoffice calc")
+		os.system('libreoffice --calc')
 		return
 
-	elif "excel" in input:
-		assistant_speaks("Opening Microsoft Excel")
-		os.startfile('C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office 2013\\Excel 2013.lnk')
+	elif "whatsapp" in input:
+		assistant_speaks("Opening whatsup")
+		os.popen('/snap/bin/whatsdesk')
 		return
 
 	else:
@@ -183,12 +186,15 @@ def open_application(input):
 		assistant_speaks("Application not available")
 		return
 
+
+
+
 #code to send message to a number
 
 def Whatsapp_open():
    
     pywhatkit.sendwhatmsg_instantly(
-    phone_no="+200000000", #any phone number
+    phone_no="+2050005500", #any phone number
     message="My voice Assistant is talk to you",
     #time_hour=1,
     #time_min=30
