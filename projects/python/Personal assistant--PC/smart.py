@@ -159,20 +159,24 @@ def open_application(input):
 
 	if "chrome" in input:
 		assistant_speaks("Google Chrome")
+		#the path of google chrome to open APP
 		os.popen(' /usr/bin/google-chrome /usr/share/man/man1/google-chrome.1.gz')
 		return
 
 	elif "firefox" in input or "mozilla" in input:
 		assistant_speaks("Opening Mozilla Firefox")
+		#the path of Firefox to open APP
 		os.popen('/usr/bin/firefox /etc/firefox /snap/bin/firefox')
 		return
 
 	elif "word" in input:
 		assistant_speaks("libreoffice writer")
+		#open libreoffice -writer by operating system
 		os.system('libreoffice --writer') 
 		return
 	elif "excel" in input:
 		assistant_speaks("Opening libreoffice calc")
+		#open libreoffice --calc by operating system
 		os.system('libreoffice --calc')
 		return
 
